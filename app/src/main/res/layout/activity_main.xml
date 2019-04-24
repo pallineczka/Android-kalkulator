@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:layout_editor_absoluteX="8dp"
+    tools:layout_editor_absoluteY="8dp">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="10dip"
+        android:layout_marginTop="50dip"
+        android:layout_marginRight="50dip"
+        android:layout_marginLeft="50dip"
+        android:text="Calculator"
+        android:textSize="40dip"/>
+
+    <Button
+        android:id="@+id/buttonSimple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="50dip"
+        android:layout_marginLeft="50dip"
+        android:text="Simple" />
+
+
+    <Button
+        android:id="@+id/buttonAdvanced"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="50dip"
+        android:layout_marginLeft="50dip"
+        android:text="Advanced" />
+
+    <Button
+        android:id="@+id/buttonAbout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="50dip"
+        android:layout_marginLeft="50dip"
+        android:text="About" />
+
+    <Button
+        android:id="@+id/buttonExit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="50dip"
+        android:layout_marginLeft="50dip"
+        android:text="Exit" />
+</LinearLayout>
