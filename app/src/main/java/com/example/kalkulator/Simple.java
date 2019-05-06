@@ -12,6 +12,7 @@ import android.widget.Toast;
 public class Simple extends AppCompatActivity {
 
     private static final String TAG = "Equation";
+    private TextView textView;
     String first = "";
     String second = "";
     String operator = "";
@@ -20,9 +21,40 @@ public class Simple extends AppCompatActivity {
     String value = "";
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("first", first );
+        outState.putString("second", second);
+        outState.putString("operator", operator);
+        outState.putString("result", String.valueOf(textView.getText()));
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple);
+
+        textView = findViewById(R.id.textView);
+
+        if (savedInstanceState != null) {
+            first = savedInstanceState.getString("first");
+            second = savedInstanceState.getString("second");
+            operator = savedInstanceState.getString("operator");
+
+            if(!first.equals("") && second.equals("") && !operator.equals("")){
+                result=first+operator;
+                textView.setText(first.concat(operator));
+                textView.setText(savedInstanceState.getString("result"));
+            } else if(!first.equals("") && !second.equals("") && !operator.equals("")){
+                result=first+operator+second;
+                textView.setText(first.concat(operator).concat(second));
+                textView.setText(savedInstanceState.getString("result"));
+            } else if(!first.equals("") && second.equals("") && operator.equals("")){
+                result=first;
+                textView.setText(first);
+                textView.setText(savedInstanceState.getString("result"));
+            }
+        }
 
         Button buttonAC = (Button) findViewById(R.id.buttonAC);
         Button buttonC = (Button) findViewById(R.id.buttonC);
@@ -217,6 +249,10 @@ public class Simple extends AppCompatActivity {
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!operator.equals("")){
+                    result = String.valueOf(result.subSequence(0,result.length()-1));
+                    textView.setText(result);
+                }
                 if(first.equals("")) {
                     first = first.concat("0");
                     result = result + first;
@@ -228,13 +264,15 @@ public class Simple extends AppCompatActivity {
                 }
                 if(!value.equals("")){
                     textView2.setText("");
+                    if(value.contains(",")){
+                        value = value.replace(",", ".");
+                    }
                     first = value;
                     second = "";
                     value = "";
                     result = "";
                     result = result + first;
                     operator = "";
-                    operator = "+";
                     result = result + operator;
                     textView.setText(result);
                 }
@@ -248,6 +286,10 @@ public class Simple extends AppCompatActivity {
         buttonSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!operator.equals("")){
+                    result = String.valueOf(result.subSequence(0,result.length()-1));
+                    textView.setText(result);
+                }
                 if(first.equals("")) {
                     first = first.concat("0");
                     result = result + first;
@@ -259,13 +301,15 @@ public class Simple extends AppCompatActivity {
                 }
                 if(!value.equals("")){
                     textView2.setText("");
+                    if(value.contains(",")){
+                        value = value.replace(",", ".");
+                    }
                     first = value;
                     second = "";
                     value = "";
                     result = "";
                     result = result + first;
                     operator = "";
-                    operator = "-";
                     result = result + operator;
                     textView.setText(result);
                 }
@@ -279,6 +323,10 @@ public class Simple extends AppCompatActivity {
         buttonMultiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!operator.equals("")){
+                    result = String.valueOf(result.subSequence(0,result.length()-1));
+                    textView.setText(result);
+                }
                 if(first.equals("")) {
                     first = first.concat("0");
                     result = result + first;
@@ -290,13 +338,15 @@ public class Simple extends AppCompatActivity {
                 }
                 if(!value.equals("")){
                     textView2.setText("");
+                    if(value.contains(",")){
+                        value = value.replace(",", ".");
+                    }
                     first = value;
                     second = "";
                     value = "";
                     result = "";
                     result = result + first;
                     operator = "";
-                    operator = "*";
                     result = result + operator;
                     textView.setText(result);
                 }
@@ -310,6 +360,10 @@ public class Simple extends AppCompatActivity {
         buttonDivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!operator.equals("")){
+                    result = String.valueOf(result.subSequence(0,result.length()-1));
+                    textView.setText(result);
+                }
                 if(first.equals("")) {
                     first = first.concat("0");
                     result = result + first;
@@ -321,13 +375,15 @@ public class Simple extends AppCompatActivity {
                 }
                 if(!value.equals("")){
                     textView2.setText("");
+                    if(value.contains(",")){
+                        value = value.replace(",", ".");
+                    }
                     first = value;
                     second = "";
                     value = "";
                     result = "";
                     result = result + first;
                     operator = "";
-                    operator = "/";
                     result = result + operator;
                     textView.setText(result);
                 }
@@ -443,6 +499,8 @@ public class Simple extends AppCompatActivity {
             public void onClick(View v) {
                 if(first.equals("")){
                     textView.setText("");
+                } else if(first.equals("0") && second.equals("")){
+                    first = first;
                 } else if(second.equals("")){
                     first = String.valueOf(Double.parseDouble(first) * (-1));
                     textView.getText();

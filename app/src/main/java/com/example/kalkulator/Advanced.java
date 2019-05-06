@@ -20,6 +20,7 @@ import static java.lang.Math.tan;
 public class Advanced extends AppCompatActivity {
 
     private static final String TAG = "Equation";
+    private TextView textView;
     String first = "";
     String second = "";
     String operator = "";
@@ -29,9 +30,40 @@ public class Advanced extends AppCompatActivity {
     String function = "";
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("first", first );
+        outState.putString("second", second);
+        outState.putString("operator", operator);
+        outState.putString("result", String.valueOf(textView.getText()));
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advanced);
+
+        textView = findViewById(R.id.textView);
+
+        if (savedInstanceState != null) {
+            first = savedInstanceState.getString("first");
+            second = savedInstanceState.getString("second");
+            operator = savedInstanceState.getString("operator");
+
+            if(!first.equals("") && second.equals("") && !operator.equals("")){
+                result=first+operator;
+                textView.setText(first.concat(operator));
+                textView.setText(savedInstanceState.getString("result"));
+            } else if(!first.equals("") && !second.equals("") && !operator.equals("")){
+                result=first+operator+second;
+                textView.setText(first.concat(operator).concat(second));
+                textView.setText(savedInstanceState.getString("result"));
+            } else if(!first.equals("") && second.equals("") && operator.equals("")){
+                result=first;
+                textView.setText(first);
+                textView.setText(savedInstanceState.getString("result"));
+            }
+        }
 
         Button buttonAC = (Button) findViewById(R.id.buttonAC);
         Button buttonC = (Button) findViewById(R.id.buttonC);
@@ -235,6 +267,10 @@ public class Advanced extends AppCompatActivity {
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!operator.equals("")){
+                    result = String.valueOf(result.subSequence(0,result.length()-1));
+                    textView.setText(result);
+                }
                 if(first.equals("")) {
                     first = first.concat("0");
                     result = result + first;
@@ -246,13 +282,15 @@ public class Advanced extends AppCompatActivity {
                 }
                 if(!value.equals("")){
                     textView2.setText("");
+                    if(value.contains(",")){
+                        value = value.replace(",", ".");
+                    }
                     first = value;
                     second = "";
                     value = "";
                     result = "";
                     result = result + first;
                     operator = "";
-                    operator = "+";
                     result = result + operator;
                     textView.setText(result);
                 }
@@ -266,6 +304,10 @@ public class Advanced extends AppCompatActivity {
         buttonSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!operator.equals("")){
+                    result = String.valueOf(result.subSequence(0,result.length()-1));
+                    textView.setText(result);
+                }
                 if(first.equals("")) {
                     first = first.concat("0");
                     result = result + first;
@@ -277,13 +319,15 @@ public class Advanced extends AppCompatActivity {
                 }
                 if(!value.equals("")){
                     textView2.setText("");
+                    if(value.contains(",")){
+                        value = value.replace(",", ".");
+                    }
                     first = value;
                     second = "";
                     value = "";
                     result = "";
                     result = result + first;
                     operator = "";
-                    operator = "-";
                     result = result + operator;
                     textView.setText(result);
                 }
@@ -297,6 +341,10 @@ public class Advanced extends AppCompatActivity {
         buttonMultiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!operator.equals("")){
+                    result = String.valueOf(result.subSequence(0,result.length()-1));
+                    textView.setText(result);
+                }
                 if(first.equals("")) {
                     first = first.concat("0");
                     result = result + first;
@@ -308,13 +356,15 @@ public class Advanced extends AppCompatActivity {
                 }
                 if(!value.equals("")){
                     textView2.setText("");
+                    if(value.contains(",")){
+                        value = value.replace(",", ".");
+                    }
                     first = value;
                     second = "";
                     value = "";
                     result = "";
                     result = result + first;
                     operator = "";
-                    operator = "*";
                     result = result + operator;
                     textView.setText(result);
                 }
@@ -328,6 +378,10 @@ public class Advanced extends AppCompatActivity {
         buttonDivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!operator.equals("")){
+                    result = String.valueOf(result.subSequence(0,result.length()-1));
+                    textView.setText(result);
+                }
                 if(first.equals("")) {
                     first = first.concat("0");
                     result = result + first;
@@ -339,13 +393,15 @@ public class Advanced extends AppCompatActivity {
                 }
                 if(!value.equals("")){
                     textView2.setText("");
+                    if(value.contains(",")){
+                        value = value.replace(",", ".");
+                    }
                     first = value;
                     second = "";
                     value = "";
                     result = "";
                     result = result + first;
                     operator = "";
-                    operator = "/";
                     result = result + operator;
                     textView.setText(result);
                 }
@@ -402,7 +458,7 @@ public class Advanced extends AppCompatActivity {
                     textView2.setText(value);
                 } else if(operator.equals("/")){
                     if(Double.parseDouble(second) == 0){
-                        Toast message = Toast.makeText(getBaseContext(), "Error", Toast.LENGTH_LONG);
+                        Toast message = Toast.makeText(getBaseContext(), "Błędne działanie", Toast.LENGTH_LONG);
                         message.show();
                     } else {
                         eq = String.format("%.5f", Double.parseDouble(first) / Double.parseDouble(second));
@@ -419,18 +475,34 @@ public class Advanced extends AppCompatActivity {
                 else if(function.equals("log") || function.equals("sin") || function.equals("cos") || function.equals("tan") || function.equals("ln") || function.equals("sqrt")){
                     result = result.concat(")");
                     textView.setText(result);
-                    if(first.equals("log")) {
-                        eq = String.format("%.5f", log10(Double.parseDouble(second)));
-                    } else if(first.equals("sin")) {
-                        eq = String.format("%.5f", sin(Double.parseDouble(second)));
-                    } else if(first.equals("cos")) {
-                        eq = String.format("%.5f", cos(Double.parseDouble(second)));
-                    } else if(first.equals("tan")) {
-                        eq = String.format("%.5f", tan(Double.parseDouble(second)));
-                    } else if(first.equals("ln")) {
-                        eq = String.format("%.5f", log(Double.parseDouble(second)));
-                    } else if(first.equals("sqrt")) {
-                        eq = String.format("%.5f", sqrt(Double.parseDouble(second)));
+                    if(function.equals("log")) {
+                        if (first.contains("-")){
+                            eq = String.format("%.5f", log10(Double.parseDouble(second)) * (-1));
+                        } else {
+                            eq = String.format("%.5f", log10(Double.parseDouble(second)));
+                        }
+                    } else if(function.equals("sin")) {
+                        if (first.contains("-")){
+                            eq = String.format("%.5f", sin(Double.parseDouble(second)) * (-1));
+                        } else eq = String.format("%.5f", sin(Double.parseDouble(second)));
+                    } else if(function.equals("cos")) {
+                        if (first.contains("-")){
+                            eq = String.format("%.5f", cos(Double.parseDouble(second)) * (-1));
+                        } else eq = String.format("%.5f", cos(Double.parseDouble(second)));
+                    } else if(function.equals("tan")) {
+                        if (first.contains("-")){
+                            eq = String.format("%.5f", sqrt(Double.parseDouble(second)) * (-1));
+                        } else eq = String.format("%.5f", tan(Double.parseDouble(second)));
+                    } else if(function.equals("ln")) {
+                        if (first.contains("-")){
+                            eq = String.format("%.5f", log(Double.parseDouble(second)) * (-1));
+                        } else {
+                            eq = String.format("%.5f", log(Double.parseDouble(second)));
+                        }
+                    } else if(function.equals("sqrt")) {
+                        if (first.contains("-")){
+                            eq = String.format("%.5f", sqrt(Double.parseDouble(second)) * (-1));
+                        } else eq = String.format("%.5f", sqrt(Double.parseDouble(second)));
                     }
                     value = textView2.getText() + eq;
                     while (value.contains(".") || value.contains(",") && value.charAt(value.length()-1) == '0' || value.charAt(value.length()-1) == ',' || value.charAt(value.length()-1) == '.'){
@@ -509,8 +581,10 @@ public class Advanced extends AppCompatActivity {
             public void onClick(View v) {
                 if(first.equals("")){
                     textView.setText("");
+                } else if(first.equals("0") && second.equals("")){
+                    first = first;
                 } else if(second.equals("")){
-                    first = String.valueOf(Double.parseDouble(first) * (-1));
+                    first = "-" + first;
                     textView.getText();
                     while (first.contains(".") || first.charAt(first.length()-1) == '0' || first.charAt(first.length()-1) == ',' || first.charAt(first.length()-1) == '.'){
                         if(first.charAt(first.length()-1) == '.' || first.charAt(first.length()-1) == ','){
@@ -525,7 +599,12 @@ public class Advanced extends AppCompatActivity {
                         operator = "-";
                     } else if(operator == "-"){
                         operator = "+";
-                    } else if(operator == "*" || operator == "/"){
+                    } else if(function == "x2"){
+                        second = second;
+                    } else if(function == "sqrt" || function == "log" || function == "ln"){
+                        Toast message = Toast.makeText(getBaseContext(), "Błędne działanie", Toast.LENGTH_LONG);
+                        message.show();
+                    }else{
                         second = String.valueOf(Double.parseDouble(second) * (-1));
                         textView.getText();
                     }
@@ -538,6 +617,7 @@ public class Advanced extends AppCompatActivity {
                     result = first+operator+second;
                     textView.setText(result);
                 }
+                Log.d(TAG, "first: " + first + "\t operator: " + operator + "\t second: " + second + "\t result: " + result + "\t eq: " + eq + "\t value: " + value);
             }
         });
         buttonSin.setOnClickListener(new View.OnClickListener() {
@@ -599,6 +679,13 @@ public class Advanced extends AppCompatActivity {
                     second = "2";
                     result = result + operator + second;
                     textView.setText(result);
+                } else{
+                    first = "0";
+                    result = first;
+                    operator = "^";
+                    second = "2";
+                    result = result + operator + second;
+                    textView.setText(result);
                 }
             }
         });
@@ -607,6 +694,12 @@ public class Advanced extends AppCompatActivity {
             public void onClick(View v) {
                 function = function.concat("xy");
                 if(!first.equals("")) {
+                    operator = "^";
+                    result = result + operator;
+                    textView.setText(result);
+                } else{
+                    first = "0";
+                    result = first;
                     operator = "^";
                     result = result + operator;
                     textView.setText(result);
@@ -629,7 +722,7 @@ public class Advanced extends AppCompatActivity {
                 if(first.equals("")){
                     textView.setText("");
                 } else if(second.equals("")){
-                    first = String.valueOf(Double.parseDouble(first) * 0.01);
+                    first = String.format("%.5f", Double.parseDouble(first) * 0.01);
                     textView.getText();
                     while (first.contains(".") || first.charAt(first.length()-1) == '0' || first.charAt(first.length()-1) == ',' || first.charAt(first.length()-1) == '.'){
                         if(first.charAt(first.length()-1) == '.' || first.charAt(first.length()-1) == ','){
@@ -637,16 +730,22 @@ public class Advanced extends AppCompatActivity {
                             break;
                         } else first = first.substring(0, first.length() - 1);
                     }
+                    if(first.contains(",")){
+                        first = first.replace(",", ".");
+                    }
                     result = first+operator+second;
                     textView.setText(result);
                 } else{
-                    second = String.valueOf(Double.parseDouble(second) * 0.01);
+                    second = String.format("%.5f", Double.parseDouble(second) * 0.01);
                     textView.getText();
                     while (second.contains(".") || second.contains(",") && second.charAt(second.length()-1) == '0' || second.charAt(second.length()-1) == ',' || second.charAt(second.length()-1) == '.'){
                         if(second.charAt(second.length()-1) == '.' || second.charAt(second.length()-1) == ','){
                             second = second.substring(0, second.length() - 1);
                             break;
                         } else second = second.substring(0, second.length() - 1);
+                    }
+                    if(second.contains(",")){
+                        second = second.replace(",", ".");
                     }
                     result = first+operator+second;
                     textView.setText(result);
