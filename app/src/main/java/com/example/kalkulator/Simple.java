@@ -440,7 +440,7 @@ public class Simple extends AppCompatActivity {
                     textView2.setText(value);
                 } else if(operator.equals("/")){
                     if(Double.parseDouble(second) == 0){
-                        Toast message = Toast.makeText(getBaseContext(), "Error", Toast.LENGTH_LONG);
+                        Toast message = Toast.makeText(getBaseContext(), "Błędne działanie!", Toast.LENGTH_LONG);
                         message.show();
                     } else {
                         eq = String.format("%.5f", Double.parseDouble(first) / Double.parseDouble(second));

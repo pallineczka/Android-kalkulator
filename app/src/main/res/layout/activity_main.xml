@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginBottom="10dip"
-        android:layout_marginTop="50dip"
+        android:layout_marginTop="20dip"
         android:layout_marginRight="50dip"
         android:layout_marginLeft="50dip"
         android:text="Calculator"
@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="50dip"
         android:layout_marginLeft="50dip"
+        android:padding="0dp"
         android:text="Simple" />
 
 
@@ -36,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="50dip"
         android:layout_marginLeft="50dip"
+        android:padding="0dp"
         android:text="Advanced" />
 
     <Button
@@ -44,6 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="50dip"
         android:layout_marginLeft="50dip"
+        android:padding="0dp"
         android:text="About" />
 
     <Button
@@ -52,5 +55,6 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="50dip"
         android:layout_marginLeft="50dip"
+        android:padding="0dp"
         android:text="Exit" />
 </LinearLayout>
