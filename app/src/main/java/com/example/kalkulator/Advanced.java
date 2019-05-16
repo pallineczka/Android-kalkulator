@@ -21,6 +21,7 @@ public class Advanced extends AppCompatActivity {
 
     private static final String TAG = "Equation";
     private TextView textView;
+    private TextView textView2;
     String first = "";
     String second = "";
     String operator = "";
@@ -34,7 +35,9 @@ public class Advanced extends AppCompatActivity {
         outState.putString("first", first );
         outState.putString("second", second);
         outState.putString("operator", operator);
+        outState.putString("value", value);
         outState.putString("result", String.valueOf(textView.getText()));
+        outState.putString("value", String.valueOf(textView2.getText()));
         super.onSaveInstanceState(outState);
     }
 
@@ -44,11 +47,13 @@ public class Advanced extends AppCompatActivity {
         setContentView(R.layout.activity_advanced);
 
         textView = findViewById(R.id.textView);
+        textView2 = findViewById(R.id.textView2);
 
         if (savedInstanceState != null) {
             first = savedInstanceState.getString("first");
             second = savedInstanceState.getString("second");
             operator = savedInstanceState.getString("operator");
+            value = savedInstanceState.getString("value");
 
             if(!first.equals("") && second.equals("") && !operator.equals("")){
                 result=first+operator;
@@ -62,6 +67,13 @@ public class Advanced extends AppCompatActivity {
                 result=first;
                 textView.setText(first);
                 textView.setText(savedInstanceState.getString("result"));
+            }
+            if(!first.equals("") && !second.equals("") && !operator.equals("") && !value.equals("")){
+                result=first+operator+second;
+                textView.setText(first.concat(operator).concat(second));
+                textView.setText(savedInstanceState.getString("result"));
+                textView2.setText(value);
+                textView2.setText(savedInstanceState.getString("value"));
             }
         }
 
@@ -108,6 +120,20 @@ public class Advanced extends AppCompatActivity {
                     result = result.concat("1");
                     textView.setText(result);
                 }
+                if(!value.equals("")){
+                    first = "";
+                    operator = "";
+                    second = "";
+                    result = "";
+                    value = "";
+                    eq = "";
+                    function = "";
+                    textView.setText("");
+                    textView2.setText("");
+                    first = first.concat("1");
+                    result = result.concat("1");
+                    textView.setText(result);
+                }
             }
         });
         buttonS2.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +145,20 @@ public class Advanced extends AppCompatActivity {
                     textView.setText(result);
                 } else{
                     second = second.concat("2");
+                    result = result.concat("2");
+                    textView.setText(result);
+                }
+                if(!value.equals("")){
+                    first = "";
+                    operator = "";
+                    second = "";
+                    result = "";
+                    value = "";
+                    eq = "";
+                    function = "";
+                    textView.setText("");
+                    textView2.setText("");
+                    first = first.concat("2");
                     result = result.concat("2");
                     textView.setText(result);
                 }
@@ -136,6 +176,20 @@ public class Advanced extends AppCompatActivity {
                     result = result.concat("3");
                     textView.setText(result);
                 }
+                if(!value.equals("")){
+                    first = "";
+                    operator = "";
+                    second = "";
+                    result = "";
+                    value = "";
+                    eq = "";
+                    function = "";
+                    textView.setText("");
+                    textView2.setText("");
+                    first = first.concat("3");
+                    result = result.concat("3");
+                    textView.setText(result);
+                }
             }
         });
         buttonS4.setOnClickListener(new View.OnClickListener() {
@@ -147,6 +201,20 @@ public class Advanced extends AppCompatActivity {
                     textView.setText(result);
                 } else{
                     second = second.concat("4");
+                    result = result.concat("4");
+                    textView.setText(result);
+                }
+                if(!value.equals("")){
+                    first = "";
+                    operator = "";
+                    second = "";
+                    result = "";
+                    value = "";
+                    eq = "";
+                    function = "";
+                    textView.setText("");
+                    textView2.setText("");
+                    first = first.concat("4");
                     result = result.concat("4");
                     textView.setText(result);
                 }
@@ -164,6 +232,20 @@ public class Advanced extends AppCompatActivity {
                     result = result.concat("5");
                     textView.setText(result);
                 }
+                if(!value.equals("")){
+                    first = "";
+                    operator = "";
+                    second = "";
+                    result = "";
+                    value = "";
+                    eq = "";
+                    function = "";
+                    textView.setText("");
+                    textView2.setText("");
+                    first = first.concat("5");
+                    result = result.concat("5");
+                    textView.setText(result);
+                }
             }
         });
         buttonS6.setOnClickListener(new View.OnClickListener() {
@@ -175,6 +257,20 @@ public class Advanced extends AppCompatActivity {
                     textView.setText(result);
                 } else{
                     second = second.concat("6");
+                    result = result.concat("6");
+                    textView.setText(result);
+                }
+                if(!value.equals("")){
+                    first = "";
+                    operator = "";
+                    second = "";
+                    result = "";
+                    value = "";
+                    eq = "";
+                    function = "";
+                    textView.setText("");
+                    textView2.setText("");
+                    first = first.concat("6");
                     result = result.concat("6");
                     textView.setText(result);
                 }
@@ -192,6 +288,20 @@ public class Advanced extends AppCompatActivity {
                     result = result.concat("7");
                     textView.setText(result);
                 }
+                if(!value.equals("")){
+                    first = "";
+                    operator = "";
+                    second = "";
+                    result = "";
+                    value = "";
+                    eq = "";
+                    function = "";
+                    textView.setText("");
+                    textView2.setText("");
+                    first = first.concat("7");
+                    result = result.concat("7");
+                    textView.setText(result);
+                }
             }
         });
         buttonS8.setOnClickListener(new View.OnClickListener() {
@@ -203,6 +313,20 @@ public class Advanced extends AppCompatActivity {
                     textView.setText(result);
                 } else{
                     second = second.concat("8");
+                    result = result.concat("8");
+                    textView.setText(result);
+                }
+                if(!value.equals("")){
+                    first = "";
+                    operator = "";
+                    second = "";
+                    result = "";
+                    value = "";
+                    eq = "";
+                    function = "";
+                    textView.setText("");
+                    textView2.setText("");
+                    first = first.concat("8");
                     result = result.concat("8");
                     textView.setText(result);
                 }
@@ -220,6 +344,20 @@ public class Advanced extends AppCompatActivity {
                     result = result.concat("9");
                     textView.setText(result);
                 }
+                if(!value.equals("")){
+                    first = "";
+                    operator = "";
+                    second = "";
+                    result = "";
+                    value = "";
+                    eq = "";
+                    function = "";
+                    textView.setText("");
+                    textView2.setText("");
+                    first = first.concat("9");
+                    result = result.concat("9");
+                    textView.setText(result);
+                }
             }
         });
         buttonS0.setOnClickListener(new View.OnClickListener() {
@@ -231,6 +369,20 @@ public class Advanced extends AppCompatActivity {
                     textView.setText(result);
                 } else{
                     second = second.concat("0");
+                    result = result.concat("0");
+                    textView.setText(result);
+                }
+                if(!value.equals("")){
+                    first = "";
+                    operator = "";
+                    second = "";
+                    result = "";
+                    value = "";
+                    eq = "";
+                    function = "";
+                    textView.setText("");
+                    textView2.setText("");
+                    first = first.concat("0");
                     result = result.concat("0");
                     textView.setText(result);
                 }
@@ -262,14 +414,34 @@ public class Advanced extends AppCompatActivity {
                         textView.setText(result);
                     }
                 }
+                if(!value.equals("")){
+                    first = "";
+                    operator = "";
+                    second = "";
+                    result = "";
+                    value = "";
+                    eq = "";
+                    function = "";
+                    textView.setText("");
+                    textView2.setText("");
+                    if(!first.contains(".")){
+                        if(first.equals("")){
+                            first = first.concat("0");
+                            result = result.concat("0");
+                            textView.setText(result);
+                        }
+                        first = first.concat(".");
+                        result = result.concat(".");
+                        textView.setText(result);
+                    }
+                }
             }
         });
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!operator.equals("")){
-                    result = String.valueOf(result.subSequence(0,result.length()-1));
-                    textView.setText(result);
+                if(!operator.equals("") && !first.equals("") && !second.equals("")){
+                    result = result;
                 }
                 if(first.equals("")) {
                     first = first.concat("0");
@@ -295,8 +467,15 @@ public class Advanced extends AppCompatActivity {
                     textView.setText(result);
                 }
                 if(second.equals("")){
+                    if(!operator.equals("")){
+                        result = "";
+                        result = result + first;
+                        textView.setText("");
+                    }
                     operator = "+";
-                    result = result + operator;
+                    if(!result.contains("+")) {
+                        result = result + operator;
+                    }
                     textView.setText(result);
                 }
             }
@@ -304,9 +483,8 @@ public class Advanced extends AppCompatActivity {
         buttonSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!operator.equals("")){
-                    result = String.valueOf(result.subSequence(0,result.length()-1));
-                    textView.setText(result);
+                if(!operator.equals("") && !first.equals("") && !second.equals("")){
+                    result = result;
                 }
                 if(first.equals("")) {
                     first = first.concat("0");
@@ -332,8 +510,15 @@ public class Advanced extends AppCompatActivity {
                     textView.setText(result);
                 }
                 if(second.equals("")){
+                    if(!operator.equals("")){
+                        result = "";
+                        result = result + first;
+                        textView.setText("");
+                    }
                     operator = "-";
-                    result = result + operator;
+                    if(!result.contains("-")) {
+                        result = result + operator;
+                    }
                     textView.setText(result);
                 }
             }
@@ -341,9 +526,8 @@ public class Advanced extends AppCompatActivity {
         buttonMultiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!operator.equals("")){
-                    result = String.valueOf(result.subSequence(0,result.length()-1));
-                    textView.setText(result);
+                if(!operator.equals("") && !first.equals("") && !second.equals("")){
+                    result = result;
                 }
                 if(first.equals("")) {
                     first = first.concat("0");
@@ -369,8 +553,15 @@ public class Advanced extends AppCompatActivity {
                     textView.setText(result);
                 }
                 if(second.equals("")){
+                    if(!operator.equals("")){
+                        result = "";
+                        result = result + first;
+                        textView.setText("");
+                    }
                     operator = "*";
-                    result = result + operator;
+                    if(!result.contains("*")) {
+                        result = result + operator;
+                    }
                     textView.setText(result);
                 }
             }
@@ -378,9 +569,8 @@ public class Advanced extends AppCompatActivity {
         buttonDivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!operator.equals("")){
-                    result = String.valueOf(result.subSequence(0,result.length()-1));
-                    textView.setText(result);
+                if(!operator.equals("") && !first.equals("") && !second.equals("")){
+                    result = result;
                 }
                 if(first.equals("")) {
                     first = first.concat("0");
@@ -406,8 +596,15 @@ public class Advanced extends AppCompatActivity {
                     textView.setText(result);
                 }
                 if(second.equals("")){
+                    if(!operator.equals("")){
+                        result = "";
+                        result = result + first;
+                        textView.setText("");
+                    }
                     operator = "/";
-                    result = result + operator;
+                    if(!result.contains("/")) {
+                        result = result + operator;
+                    }
                     textView.setText(result);
                 }
             }
@@ -416,124 +613,132 @@ public class Advanced extends AppCompatActivity {
             @SuppressLint("DefaultLocale")
             @Override
             public void onClick(View v) {
-                if(second.equals("")) {
-                    second = second.concat("0");
-                    result = result + second;
-                    textView.setText(result);
-                }
-                if(second.charAt(second.length()-1) == '.' || second.charAt(second.length()-1) == ','){
-                    second = second.substring(0, second.length() - 1);
-                    result = result.substring(0, result.length() - 1);
-                    textView.setText(result);
-                }
-                if(operator.equals("+")){
-                    eq = String.format("%.5f", Double.parseDouble(first) + Double.parseDouble(second));
-                    value = textView2.getText() + eq;
-                    while (value.contains(".") || value.contains(",") && value.charAt(value.length()-1) == '0' || value.charAt(value.length()-1) == ',' || value.charAt(value.length()-1) == '.'){
-                        if(value.charAt(value.length()-1) == '.' || value.charAt(value.length()-1) == ','){
-                            value = value.substring(0, value.length() - 1);
-                            break;
-                        } else value = value.substring(0, value.length() - 1);
+                if(!operator.equals("")) {
+                    if (second.equals("")) {
+                        second = second.concat("0");
+                        result = result + second;
+                        textView.setText(result);
                     }
-                    textView2.setText(value);
-                } else if(operator.equals("-")){
-                    eq = String.format("%.5f", Double.parseDouble(first) - Double.parseDouble(second));
-                    value = textView2.getText() + eq;
-                    while (value.contains(".") || value.contains(",") && value.charAt(value.length()-1) == '0' || value.charAt(value.length()-1) == ',' || value.charAt(value.length()-1) == '.'){
-                        if(value.charAt(value.length()-1) == '.' || value.charAt(value.length()-1) == ','){
-                            value = value.substring(0, value.length() - 1);
-                            break;
-                        } else value = value.substring(0, value.length() - 1);
+                    if (second.charAt(second.length() - 1) == '.' || second.charAt(second.length() - 1) == ',') {
+                        second = second.substring(0, second.length() - 1);
+                        result = result.substring(0, result.length() - 1);
+                        textView.setText(result);
                     }
-                    textView2.setText(value);
-                } else if(operator.equals("*")){
-                    eq = String.format("%.5f", Double.parseDouble(first) * Double.parseDouble(second));
-                    value = textView2.getText() + eq;
-                    while (value.contains(".") || value.contains(",") && value.charAt(value.length()-1) == '0' || value.charAt(value.length()-1) == ',' || value.charAt(value.length()-1) == '.'){
-                        if(value.charAt(value.length()-1) == '.' || value.charAt(value.length()-1) == ','){
-                            value = value.substring(0, value.length() - 1);
-                            break;
-                        } else value = value.substring(0, value.length() - 1);
-                    }
-                    textView2.setText(value);
-                } else if(operator.equals("/")){
-                    if(Double.parseDouble(second) == 0){
-                        Toast message = Toast.makeText(getBaseContext(), "Błędne działanie", Toast.LENGTH_LONG);
-                        message.show();
-                    } else {
-                        eq = String.format("%.5f", Double.parseDouble(first) / Double.parseDouble(second));
-                        value = textView2.getText() + eq;
-                        while (value.contains(".") || value.contains(",") && value.charAt(value.length()-1) == '0' || value.charAt(value.length()-1) == ',' || value.charAt(value.length()-1) == '.'){
-                            if(value.charAt(value.length()-1) == '.' || value.charAt(value.length()-1) == ','){
+                    if (operator.equals("+")) {
+                        eq = String.format("%.5f", Double.parseDouble(first) + Double.parseDouble(second));
+                        value = eq;
+                        while (value.contains(".") || value.contains(",") && value.charAt(value.length() - 1) == '0' || value.charAt(value.length() - 1) == ',' || value.charAt(value.length() - 1) == '.') {
+                            if (value.charAt(value.length() - 1) == '.' || value.charAt(value.length() - 1) == ',') {
                                 value = value.substring(0, value.length() - 1);
                                 break;
                             } else value = value.substring(0, value.length() - 1);
                         }
+                        textView2.setText("");
+                        textView2.setText(value);
+                    } else if (operator.equals("-")) {
+                        eq = String.format("%.5f", Double.parseDouble(first) - Double.parseDouble(second));
+                        value = eq;
+                        while (value.contains(".") || value.contains(",") && value.charAt(value.length() - 1) == '0' || value.charAt(value.length() - 1) == ',' || value.charAt(value.length() - 1) == '.') {
+                            if (value.charAt(value.length() - 1) == '.' || value.charAt(value.length() - 1) == ',') {
+                                value = value.substring(0, value.length() - 1);
+                                break;
+                            } else value = value.substring(0, value.length() - 1);
+                        }
+                        textView2.setText("");
+                        textView2.setText(value);
+                    } else if (operator.equals("*")) {
+                        eq = String.format("%.5f", Double.parseDouble(first) * Double.parseDouble(second));
+                        value = eq;
+                        while (value.contains(".") || value.contains(",") && value.charAt(value.length() - 1) == '0' || value.charAt(value.length() - 1) == ',' || value.charAt(value.length() - 1) == '.') {
+                            if (value.charAt(value.length() - 1) == '.' || value.charAt(value.length() - 1) == ',') {
+                                value = value.substring(0, value.length() - 1);
+                                break;
+                            } else value = value.substring(0, value.length() - 1);
+                        }
+                        textView2.setText("");
+                        textView2.setText(value);
+                    } else if (operator.equals("/")) {
+                        if (Double.parseDouble(second) == 0) {
+                            Toast message = Toast.makeText(getBaseContext(), "Błędne działanie", Toast.LENGTH_LONG);
+                            message.show();
+                        } else {
+                            eq = String.format("%.5f", Double.parseDouble(first) / Double.parseDouble(second));
+                            value = eq;
+                            while (value.contains(".") || value.contains(",") && value.charAt(value.length() - 1) == '0' || value.charAt(value.length() - 1) == ',' || value.charAt(value.length() - 1) == '.') {
+                                if (value.charAt(value.length() - 1) == '.' || value.charAt(value.length() - 1) == ',') {
+                                    value = value.substring(0, value.length() - 1);
+                                    break;
+                                } else value = value.substring(0, value.length() - 1);
+                            }
+                            textView2.setText("");
+                            textView2.setText(value);
+                        }
+                    } else if (function.equals("log") || function.equals("sin") || function.equals("cos") || function.equals("tan") || function.equals("ln") || function.equals("sqrt")) {
+                        if(value.equals("")) {
+                            result = result.concat(")");
+                            textView.setText(result);
+                        }
+                        if (function.equals("log")) {
+                            if (first.contains("-")) {
+                                eq = String.format("%.5f", log10(Double.parseDouble(second)) * (-1));
+                            } else {
+                                eq = String.format("%.5f", log10(Double.parseDouble(second)));
+                            }
+                        } else if (function.equals("sin")) {
+                            if (first.contains("-")) {
+                                eq = String.format("%.5f", sin(Double.parseDouble(second)) * (-1));
+                            } else eq = String.format("%.5f", sin(Double.parseDouble(second)));
+                        } else if (function.equals("cos")) {
+                            if (first.contains("-")) {
+                                eq = String.format("%.5f", cos(Double.parseDouble(second)) * (-1));
+                            } else eq = String.format("%.5f", cos(Double.parseDouble(second)));
+                        } else if (function.equals("tan")) {
+                            if (first.contains("-")) {
+                                eq = String.format("%.5f", sqrt(Double.parseDouble(second)) * (-1));
+                            } else eq = String.format("%.5f", tan(Double.parseDouble(second)));
+                        } else if (function.equals("ln")) {
+                            if (first.contains("-")) {
+                                eq = String.format("%.5f", log(Double.parseDouble(second)) * (-1));
+                            } else {
+                                eq = String.format("%.5f", log(Double.parseDouble(second)));
+                            }
+                        } else if (function.equals("sqrt")) {
+                            if (first.contains("-")) {
+                                eq = String.format("%.5f", sqrt(Double.parseDouble(second)) * (-1));
+                            } else eq = String.format("%.5f", sqrt(Double.parseDouble(second)));
+                        }
+                        value = eq;
+                        while (value.contains(".") || value.contains(",") && value.charAt(value.length() - 1) == '0' || value.charAt(value.length() - 1) == ',' || value.charAt(value.length() - 1) == '.') {
+                            if (value.charAt(value.length() - 1) == '.' || value.charAt(value.length() - 1) == ',') {
+                                value = value.substring(0, value.length() - 1);
+                                break;
+                            } else value = value.substring(0, value.length() - 1);
+                        }
+                        textView2.setText("");
+                        textView2.setText(value);
+                    } else if (function.equals("x2")) {
+                        eq = String.format("%.5f", pow(Double.parseDouble(first), Double.parseDouble(second)));
+                        value = eq;
+                        while (value.contains(".") || value.contains(",") && value.charAt(value.length() - 1) == '0' || value.charAt(value.length() - 1) == ',' || value.charAt(value.length() - 1) == '.') {
+                            if (value.charAt(value.length() - 1) == '.' || value.charAt(value.length() - 1) == ',') {
+                                value = value.substring(0, value.length() - 1);
+                                break;
+                            } else value = value.substring(0, value.length() - 1);
+                        }
+                        textView2.setText("");
+                        textView2.setText(value);
+                    } else if (function.equals("xy")) {
+                        eq = String.format("%.5f", pow(Double.parseDouble(first), Double.parseDouble(second)));
+                        value = eq;
+                        while (value.contains(".") || value.contains(",") && value.charAt(value.length() - 1) == '0' || value.charAt(value.length() - 1) == ',' || value.charAt(value.length() - 1) == '.') {
+                            if (value.charAt(value.length() - 1) == '.' || value.charAt(value.length() - 1) == ',') {
+                                value = value.substring(0, value.length() - 1);
+                                break;
+                            } else value = value.substring(0, value.length() - 1);
+                        }
+                        textView2.setText("");
                         textView2.setText(value);
                     }
-                }
-                else if(function.equals("log") || function.equals("sin") || function.equals("cos") || function.equals("tan") || function.equals("ln") || function.equals("sqrt")){
-                    result = result.concat(")");
-                    textView.setText(result);
-                    if(function.equals("log")) {
-                        if (first.contains("-")){
-                            eq = String.format("%.5f", log10(Double.parseDouble(second)) * (-1));
-                        } else {
-                            eq = String.format("%.5f", log10(Double.parseDouble(second)));
-                        }
-                    } else if(function.equals("sin")) {
-                        if (first.contains("-")){
-                            eq = String.format("%.5f", sin(Double.parseDouble(second)) * (-1));
-                        } else eq = String.format("%.5f", sin(Double.parseDouble(second)));
-                    } else if(function.equals("cos")) {
-                        if (first.contains("-")){
-                            eq = String.format("%.5f", cos(Double.parseDouble(second)) * (-1));
-                        } else eq = String.format("%.5f", cos(Double.parseDouble(second)));
-                    } else if(function.equals("tan")) {
-                        if (first.contains("-")){
-                            eq = String.format("%.5f", sqrt(Double.parseDouble(second)) * (-1));
-                        } else eq = String.format("%.5f", tan(Double.parseDouble(second)));
-                    } else if(function.equals("ln")) {
-                        if (first.contains("-")){
-                            eq = String.format("%.5f", log(Double.parseDouble(second)) * (-1));
-                        } else {
-                            eq = String.format("%.5f", log(Double.parseDouble(second)));
-                        }
-                    } else if(function.equals("sqrt")) {
-                        if (first.contains("-")){
-                            eq = String.format("%.5f", sqrt(Double.parseDouble(second)) * (-1));
-                        } else eq = String.format("%.5f", sqrt(Double.parseDouble(second)));
-                    }
-                    value = textView2.getText() + eq;
-                    while (value.contains(".") || value.contains(",") && value.charAt(value.length()-1) == '0' || value.charAt(value.length()-1) == ',' || value.charAt(value.length()-1) == '.'){
-                        if(value.charAt(value.length()-1) == '.' || value.charAt(value.length()-1) == ','){
-                            value = value.substring(0, value.length() - 1);
-                            break;
-                        } else value = value.substring(0, value.length() - 1);
-                    }
-                    textView2.setText(value);
-                }
-                else if(function.equals("x2")){
-                    eq = String.format("%.5f", pow(Double.parseDouble(first), Double.parseDouble(second)));
-                    value = textView2.getText() + eq;
-                    while (value.contains(".") || value.contains(",") && value.charAt(value.length()-1) == '0' || value.charAt(value.length()-1) == ',' || value.charAt(value.length()-1) == '.'){
-                        if(value.charAt(value.length()-1) == '.' || value.charAt(value.length()-1) == ','){
-                            value = value.substring(0, value.length() - 1);
-                            break;
-                        } else value = value.substring(0, value.length() - 1);
-                    }
-                    textView2.setText(value);
-                }
-                else if(function.equals("xy")){
-                    eq = String.format("%.5f", pow(Double.parseDouble(first), Double.parseDouble(second)));
-                    value = textView2.getText() + eq;
-                    while (value.contains(".") || value.contains(",") && value.charAt(value.length()-1) == '0' || value.charAt(value.length()-1) == ',' || value.charAt(value.length()-1) == '.'){
-                        if(value.charAt(value.length()-1) == '.' || value.charAt(value.length()-1) == ','){
-                            value = value.substring(0, value.length() - 1);
-                            break;
-                        } else value = value.substring(0, value.length() - 1);
-                    }
-                    textView2.setText(value);
                 }
                 Log.d(TAG, "first: " + first + "\t operator: " + operator + "\t second: " + second + "\t result: " + result + "\t eq: " + eq + "\t value: " + value);
             }
